@@ -277,31 +277,19 @@ export default function App() {
       </InputRow>
 
    <Modal
-  visible={lyricsVisible}
-  animationType="slide"
-  transparent
-  onRequestClose={() => setLyricsVisible(false)}
->
-  <TouchableOpacity
-    activeOpacity={1}
-    style={{
-      flex: 1,
-      backgroundColor: 'rgba(0,0,0,0.75)',
-      justifyContent: 'flex-end'
-    }}
-    onPress={() => setLyricsVisible(false)}
+    visible={lyricsVisible}
+    animationType="slide"
+    transparent={false}
+    onRequestClose={() => setLyricsVisible(false)}
   >
-    <View
-      style={{
-        maxHeight: '70%',
-        minHeight: 180,
-        backgroundColor: '#1e1e1ecc',
-        borderTopLeftRadius: 24,
-        borderTopRightRadius: 24,
-        padding: 20
-      }}
-    >
-      <ScrollView showsVerticalScrollIndicator={true}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#1e1e1ecc' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 16 }}>
+        <Text style={{ color: '#fff', fontSize: 18, fontWeight: 'bold' }}>가사</Text>
+        <TouchableOpacity onPress={() => setLyricsVisible(false)}>
+          <Text style={{ color: '#fff', fontSize: 18 }}>닫기</Text>
+        </TouchableOpacity>
+      </View>
+      <ScrollView style={{ flex: 1, paddingHorizontal: 20 }} showsVerticalScrollIndicator={true}>
         <Text
           style={{
             color: '#fff',
@@ -314,9 +302,8 @@ export default function App() {
           {lyrics}
         </Text>
       </ScrollView>
-    </View>
-  </TouchableOpacity>
-</Modal>
+    </SafeAreaView>
+  </Modal>
 
       {loading && (
         <ActivityIndicator
