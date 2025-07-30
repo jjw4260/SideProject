@@ -32,7 +32,7 @@ app = Flask(__name__)
 CORS(app)
 
 # ────────── 라이브러리 초기화 ──────────
-# Spotify client
+# Spotify client --- IGNORE ---
 sp_oauth = SpotifyClientCredentials(
     client_id=SPOTIFY_CLIENT_ID,
     client_secret=SPOTIFY_CLIENT_SECRET
